@@ -1,0 +1,195 @@
+{
+	"info": {
+		"_postman_id": "8b4efa68-3bd4-4b5e-9994-e8bf034cd141",
+		"name": "API Rastreo GPS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "46710537",
+		"_collection_link": "https://william-2286077.postman.co/workspace/William's-Workspace~4f774241-0963-453f-8c98-39c2ba395b2b/collection/46710537-8b4efa68-3bd4-4b5e-9994-e8bf034cd141?action=share&source=collection_link&creator=46710537"
+	},
+	"item": [
+		{
+			"name": "Api Inicio Sesión",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"test 1:Validar que el codigo del status sea 200.\", function (){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"test 1:Validar que el name de usuario no sea nulo.\", function (){\r",
+							"    pm.expect(pm.response.json().name).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "awilliam.sanchez@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456789*",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://demo.traccar.org/api/session",
+					"protocol": "https",
+					"host": [
+						"demo",
+						"traccar",
+						"org"
+					],
+					"path": [
+						"api",
+						"session"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API Devices",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"test 1:Validar que el codigo del status sea 200.\", function (){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//SpeedLimit\r",
+							"let devices = pm.response.json();\r",
+							"// Filtrar dispositivos que tienen configurado el speedLimit\r",
+							"let devicesWithSpeedLimit = devices.filter(d => d.attributes && d.attributes.speedLimit !== undefined);\r",
+							"\r",
+							"devicesWithSpeedLimit.forEach(device => {\r",
+							"    let speedLimit = device.attributes.speedLimit;\r",
+							"    \r",
+							"    pm.test(`Dispositivo ID ${device.id} → speedLimit debe ser <= 50`, function () {\r",
+							"        pm.expect(speedLimit).to.be.at.most(50);\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://demo.traccar.org/api/devices",
+					"protocol": "https",
+					"host": [
+						"demo",
+						"traccar",
+						"org"
+					],
+					"path": [
+						"api",
+						"devices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Api Server",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let geofences = pm.response.json();\r",
+							"geofences.forEach(geo => {\r",
+							"    // se busca validar que la geocerca tenga un nombre no vacío\r",
+							"    pm.test(`Geocerca ID ${geo.id} → la geocerca indicada debe tener nombre definido`, function () {\r",
+							"        pm.expect(geo.name).to.not.be.undefined;\r",
+							"        pm.expect(geo.name).to.not.be.null;\r",
+							"        pm.expect(geo.name).to.not.equal(\"\");\r",
+							"    });\r",
+							"\r",
+							"    // Validar que la geocerca tenga un área definida (cadena que incluya \"POLYGON\")\r",
+							"    pm.test(`Geocerca ID ${geo.id} → debe tener área (polígono)`, function () {\r",
+							"        pm.expect(geo.area).to.not.be.undefined;\r",
+							"        pm.expect(geo.area).to.not.be.null;\r",
+							"        pm.expect(geo.area).to.include(\"POLYGON\");\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"geofences.forEach(geo => {\r",
+							"    if (geo.attributes && geo.attributes.hasOwnProperty(\"hide\")) {\r",
+							"        // Validar que 'hide' sea un valor booleano\r",
+							"        pm.test(`Geocerca ID ${geo.id} → atributo 'hide' debe ser booleano`, function () {\r",
+							"            pm.expect(typeof geo.attributes.hide).to.eql(\"boolean\");\r",
+							"        });\r",
+							"\r",
+							"        // Validar que 'hide' esté en true\r",
+							"        pm.test(`Geocerca ID ${geo.id} → 'hide' debe estar en true`, function () {\r",
+							"            pm.expect(geo.attributes.hide).to.eql(true);\r",
+							"        });\r",
+							"    } else {\r",
+							"        // Informe cuando no esté presente el atributo 'hide'\r",
+							"        pm.test(`Geocerca ID ${geo.id} → atributo 'hide' no está presente`, function () {\r",
+							"            pm.expect(true).to.eql(true); // Test informativo\r",
+							"        });\r",
+							"    }\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://demo.traccar.org/api/geofences",
+					"protocol": "https",
+					"host": [
+						"demo",
+						"traccar",
+						"org"
+					],
+					"path": [
+						"api",
+						"geofences"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

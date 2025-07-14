@@ -1,0 +1,458 @@
+{
+	"info": {
+		"_postman_id": "701d7d36-c67c-424a-89a6-7a681d8afa85",
+		"name": "Simulación Rutas Traccar",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "46710537",
+		"_collection_link": "https://william-2286077.postman.co/workspace/William's-Workspace~4f774241-0963-453f-8c98-39c2ba395b2b/collection/46710537-701d7d36-c67c-424a-89a6-7a681d8afa85?action=share&source=collection_link&creator=46710537"
+	},
+	"item": [
+		{
+			"name": "Enviar posición 1",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const timestamp = Math.floor(Date.now() / 1000);\r",
+							"pm.variables.set(\"timestamp\", timestamp);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://demo.traccar.org:5055/?id=864893032752255&lat=4.639386&lon=-74.114662&speed=60&timestamp={{timestamp}}&valid=true&accuracy=5",
+					"protocol": "http",
+					"host": [
+						"demo",
+						"traccar",
+						"org"
+					],
+					"port": "5055",
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "864893032752255",
+							"description": "Identificadors Vehiculo"
+						},
+						{
+							"key": "lat",
+							"value": "4.639386",
+							"description": "Latitud"
+						},
+						{
+							"key": "lon",
+							"value": "-74.114662",
+							"description": "longitud"
+						},
+						{
+							"key": "speed",
+							"value": "60",
+							"description": "Velocidad"
+						},
+						{
+							"key": "timestamp",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "valid",
+							"value": "true",
+							"description": "Marcar Poscion como valida"
+						},
+						{
+							"key": "accuracy",
+							"value": "5",
+							"description": "Precsion del gps"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Enviar posición 2",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const timestamp = Math.floor(Date.now() / 1000);\r",
+							"pm.variables.set(\"timestamp\", timestamp);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://demo.traccar.org:5055/?id=864893032752255&lat=4.648484&lon=-74.100536&speed=60&timestamp={{timestamp}}&valid=true&accuracy=5",
+					"protocol": "http",
+					"host": [
+						"demo",
+						"traccar",
+						"org"
+					],
+					"port": "5055",
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "864893032752255"
+						},
+						{
+							"key": "lat",
+							"value": "4.648484"
+						},
+						{
+							"key": "lon",
+							"value": "-74.100536"
+						},
+						{
+							"key": "speed",
+							"value": "60"
+						},
+						{
+							"key": "timestamp",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "valid",
+							"value": "true"
+						},
+						{
+							"key": "accuracy",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Enviar posición 3",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const timestamp = Math.floor(Date.now() / 1000);\r",
+							"pm.variables.set(\"timestamp\", timestamp);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://demo.traccar.org:5055/?id=864893032752255&lat=4.598056&lon=-74.076111&speed=60&timestamp={{timestamp}}&valid=true&accuracy=5",
+					"protocol": "http",
+					"host": [
+						"demo",
+						"traccar",
+						"org"
+					],
+					"port": "5055",
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "864893032752255"
+						},
+						{
+							"key": "lat",
+							"value": "4.598056"
+						},
+						{
+							"key": "lon",
+							"value": "-74.076111"
+						},
+						{
+							"key": "speed",
+							"value": "60"
+						},
+						{
+							"key": "timestamp",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "valid",
+							"value": "true"
+						},
+						{
+							"key": "accuracy",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Enviar posición 4",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const timestamp = Math.floor(Date.now() / 1000);\r",
+							"pm.variables.set(\"timestamp\", timestamp);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://demo.traccar.org:5055/?id=864893032752255&lat=4.605927&lon=-74.055716&speed=60&timestamp={{timestamp}}&valid=true&accuracy=5",
+					"protocol": "http",
+					"host": [
+						"demo",
+						"traccar",
+						"org"
+					],
+					"port": "5055",
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "864893032752255"
+						},
+						{
+							"key": "lat",
+							"value": "4.605927"
+						},
+						{
+							"key": "lon",
+							"value": "-74.055716"
+						},
+						{
+							"key": "speed",
+							"value": "60"
+						},
+						{
+							"key": "timestamp",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "valid",
+							"value": "true"
+						},
+						{
+							"key": "accuracy",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Enviar posición 5",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const timestamp = Math.floor(Date.now() / 1000);\r",
+							"pm.variables.set(\"timestamp\", timestamp);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://demo.traccar.org:5055/?id=864893032752255&lat=4.67616&lon=-74.048527&speed=60&timestamp={{timestamp}}&valid=true&accuracy=5",
+					"protocol": "http",
+					"host": [
+						"demo",
+						"traccar",
+						"org"
+					],
+					"port": "5055",
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "864893032752255"
+						},
+						{
+							"key": "lat",
+							"value": "4.67616"
+						},
+						{
+							"key": "lon",
+							"value": "-74.048527"
+						},
+						{
+							"key": "speed",
+							"value": "60"
+						},
+						{
+							"key": "timestamp",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "valid",
+							"value": "true"
+						},
+						{
+							"key": "accuracy",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Enviar posición 6",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const timestamp = Math.floor(Date.now() / 1000);\r",
+							"pm.variables.set(\"timestamp\", timestamp);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://demo.traccar.org:5055/?id=864893032752255&lat=4.759597&lon=-74.042073&speed=60&timestamp={{timestamp}}&valid=true&accuracy=5",
+					"protocol": "http",
+					"host": [
+						"demo",
+						"traccar",
+						"org"
+					],
+					"port": "5055",
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "864893032752255"
+						},
+						{
+							"key": "lat",
+							"value": "4.759597"
+						},
+						{
+							"key": "lon",
+							"value": "-74.042073"
+						},
+						{
+							"key": "speed",
+							"value": "60"
+						},
+						{
+							"key": "timestamp",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "valid",
+							"value": "true"
+						},
+						{
+							"key": "accuracy",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Enviar posición 7",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const timestamp = Math.floor(Date.now() / 1000);\r",
+							"pm.variables.set(\"timestamp\", timestamp);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://demo.traccar.org:5055?id=864893032752255&lat=4.648484&lon=-74.100536&speed=95&valid=true&accuracy=5",
+					"protocol": "http",
+					"host": [
+						"demo",
+						"traccar",
+						"org"
+					],
+					"port": "5055",
+					"query": [
+						{
+							"key": "id",
+							"value": "864893032752255"
+						},
+						{
+							"key": "lat",
+							"value": "4.648484"
+						},
+						{
+							"key": "lon",
+							"value": "-74.100536"
+						},
+						{
+							"key": "speed",
+							"value": "95"
+						},
+						{
+							"key": "valid",
+							"value": "true"
+						},
+						{
+							"key": "accuracy",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
