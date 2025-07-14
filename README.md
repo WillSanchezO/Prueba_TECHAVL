@@ -9,11 +9,33 @@ Lo siguiente representa una simulación de pruebas básicas automatizadas para u
 - **Traccar Demo** – Plataforma para rastreo GPS en tiempo real.
 - **Postman** – Simulación de envío de datos GPS por HTTP.
 - **Cypress** – Automatización UI para validar visualización de eventos.
-- **Curl** – Comandos directos para simular ubicación del dispositivo.
+- **Curl** – Comandos directos para simular desde Gitbash la ubicación del dispositivo(./simular_ruta_BRY137.sh)
+
+## Pasos para ejecutar:
+- Iniciar sesión en la url https://demo.traccar.org/
+- creenciales user:awilliam.sanchez@gmail.com - pass: 123456789*
+- ejecutar desde Gitbash los comandos directos para simular la ubicación del dispositivo (simular_rutas_ABC123) u opcional lanzar simulaciones de ubicaciones una a una con Postman (Simulación_Rutas_Traccar.postman_collection)
+- ejecutar simulación desde cypress
+- ejecutar pruebas de api desde Postman
 
 ---
 
-## Pruebas realizadas
+# Pruebas realizadas
+
+---
+
+# Automatización con Cypress
+
+Se automatizó la validación visual en la plataforma Traccar:
+
+- Verificar que el dispositivo está visible en el mapa
+- Validar que se actualice su ubicación
+- Confirmar que los eventos de exceder limite de velocidad, dispositivo inactivo y salida de geozona se reporten de forma correcta
+
+> Ruta del test: '/cypress/e2e/1-getting-started/eventosvehiculo.cy.js'
+
+
+## Postman con Newman::
 
 1. Exceso de velocidad
 - Se configuró un umbral de velocidad de 50,70, 80 y null km/h.
@@ -22,16 +44,12 @@ Lo siguiente representa una simulación de pruebas básicas automatizadas para u
 - Se validó que el evento de "Dispositivo Inactivo" se mostrara en la plataforma.
 - Se validó que el evento de "Salida de la Geo-zona" se mostrara en la plataforma.
 
-> Postman:
-
 ---
 
 2. Salida de geocerca
 - Se creó una geocerca circular de prueba.
 - Se asignó al dispositivo `864893032752255`.
 - Se simuló una posición fuera del área permitida.
-
-> Postman con Newman:
 
 ---
 
@@ -50,17 +68,6 @@ Lo siguiente representa una simulación de pruebas básicas automatizadas para u
 - Se envían los movimientos de acuerdo con la velocidad requerida del envío.
 - Se simularon las pruebas solo con el ID de dispositivo 864893032752255.
 
----
-
-## Automatización con Cypress
-
-Se automatizó la validación visual en la plataforma Traccar:
-
-- Verificar que el dispositivo está visible en el mapa
-- Validar que se actualice su ubicación
-- Confirmar que los eventos de exceder limite de velocidad, dispositivo inactivo y salida de geozona se reporten de forma correcta
-
-> Ruta del test: '/cypress/e2e/1-getting-started/eventosvehiculo.cy.js'
 
 ---
 
